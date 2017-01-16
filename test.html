@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script src="employ.json"></script>
+<script>
+var empLength = emp.Employees.length;
+	
+	/*for(var i=0; i<empLength; i++){
+		var emply = emp.Employees[i];
+		console.log(emply.CollegeDetails[i].compName);
+		
+		//if(emp.Employees[i].userId == "undefined") {
+			//console.log(emp.Employees[i].CollegeDetails[i].compName);
+		//}
+
+		
+		//var text = "<b>User ID:</b> "+ emp.CollegeDetails[i].compname;
+		
+		//var text = "<b>User ID:</b> "+ emp.CollegeDetails[i].cName + ", <b>Job Title:</b> "+ emp.CollegeDetails[i].City + ", <b>First Name:</b> "+ emp.CollegeDetails[i].phoneNumber + ", <b>Last Name:</b> "+ emp.CollegeDetails[i].emailAddress +"<br/>";
+		
+		//console.log("<b>User ID:</b> "+ emp.Employees[i].userId + ", <b>Job Title:</b> "+ emp.Employees[i].jobTitleName + ", <b>First Name:</b> "+ emp.Employees[i].firstName + ", <b>Last Name:</b> "+ emp.Employees[i].lastName );
+	}
+	//window.onload = function() {	document.getElementById("Data").innerHTML = text; }*/
+var c = 0;
+
+stInt = setInterval(function(){ if(c>200){ clearInterval(stInt);} document.getElementById("Data").innerHTML = c++; },0.0);
+
+var states = { "India":["Andhra Pradesh","Telangana","Tamilnadu","UP"], "USA":["New Jersy","Hawaii","Indiana"],  };
+
+function countryChng() {
+
+	var countr = document.getElementById("country");
+	var stats = document.getElementById("states");
+	var countrVal = countr[countr.selectedIndex].innerHTML;
+	contryLngth = states[countrVal].length;
+	
+	if( countrVal === countrVal){
+		stats.innerHTML=" ";
+		
+		for(u=0;u<contryLngth; u++){
+			var optn = document.createElement("option");
+			optn.innerHTML = states[countrVal][u];
+			stats.appendChild(optn);
+		}
+	}
+
+}
+
+
+
+window.onload = function(){ 
+	var imgg = document.getElementById("imgId");
+	var container = document.getElementById("container");
+	
+	container.onmousemove = function(s){
+		var leftPostn = s.screenX;
+		var topPostn = s.screenY;
+		imgg.style.display = "block";
+		imgg.style.marginTop = topPostn+"px";
+		imgg.style.marginLeft = leftPostn+"px";
+		imgg.style.transition = "0.3s";
+	}
+	document.onmouseout = function(e){
+		imgg.style.transition = "1s";
+		imgg.style.marginLeft = "0";
+		imgg.style.marginTop = "0";
+	}
+//console.log(container.offsetHeight);
+
+container.onclick = function() {
+	container.classList.toggle("smpl", "hari"); alert('hi');
+	window.scrollTo(0,0);
+}
+}
+</script>
+<style>
+#Data { boder:solid 1px #ddd; padding:20px; display:inline-block; }
+</style>
+
+</head>
+<body>
+
+<div id="Data"></div>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<div id="container" class="smpl" style="width:800px; height:1600px; border:solid 1px #ddd; overflow:hidden;"><img src="Desktop-BG.png" width="400" id="imgId"></div>
+<select id="country" onchange="countryChng()">
+<option>India</option>
+<option>USA</option>
+<option>Ireland</option>
+</select>
+
+
+<select id="states">
+</select>
+
+</body>
+</html>
